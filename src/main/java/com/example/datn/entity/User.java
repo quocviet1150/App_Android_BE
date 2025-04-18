@@ -44,18 +44,18 @@ public class User implements Serializable {
     @Column(name = "ISACTIVE", nullable = false)
     private boolean active;
 
-    @Column(name = "CREATED_DATE")
+    @Column(name = "CREATEDDATE")
     private Date createdDate;
 
-    @Column(name = "UPDATED_DATE")
+    @Column(name = "UPDATEDDATE")
     private Date updatedDate;
 
-    @Column(name = "DATE_OF_BIRTH")
+    @Column(name = "DATEOFBIRTH")
     private Date dateOfBirth;
 
     @Column(name = "SEX")
     private Integer sex;
 
-    @Column(name = "directory_path")
+    @Column(name = "DIRECTORYPATH")
     private String directoryPath;
 }

@@ -32,7 +32,7 @@ public class Department {
     private String headOfDepartment;
 
     @Column(name = "NUMBEROFEMPLOYEES", unique = true)
-    private int numberOfEmployees;
+    private Long numberOfEmployees;
 
     @Column(name = "CREATED_DATE", unique = true)
     private Date createdDate;

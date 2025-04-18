@@ -29,8 +29,8 @@ public class LeaveManagement {
     private Date workday;
 
     @Column(name = "NUMBEROFPEOPLEWORKING")
-    private int numberOfPeopleWorking;
+    private Long numberOfPeopleWorking;
 
     @Column(name = "NUMBEROFPEOPLEOFF")
-    private int numberOfPeopleOff;
+    private Long numberOfPeopleOff;
 }
