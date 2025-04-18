@@ -25,7 +25,10 @@ public class LeaveManagement {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "WORKDAY", unique = true)
+    @Column(name = "DEPARTMENTID")
+    private Long departmentId;
+
+    @Column(name = "WORKDAY")
     private Date workday;
 
     @Column(name = "NUMBEROFPEOPLEWORKING")

@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
     public void verify(VerifyDto verifyDto) {
         try {
             String token = verifyDto.getToken();
-            VerifyAccount verifyAccount = verifyAccountRepository.findByToken(token).get();
+            VerifyAccount verifyAccount = verifyAccountRepository.findByToken(token);
             User user = verifyAccount.getUser();
             user.setActive(true);
             userRepository.save(user);

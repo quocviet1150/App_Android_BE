@@ -17,13 +17,13 @@ public class TimeManagement {
     private static final long serialVersionUID = 5L;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID", unique = true)
     private String id;
 
     @Column(name = "PERSONNELMANAGEMENTID")
     private Long personnelManagementId;
 
-    @Column(name = "WORKDAY", unique = true)
+    @Column(name = "WORKDAY")
     private Date workday;
 
     @Column(name = "CHECKINTIME")

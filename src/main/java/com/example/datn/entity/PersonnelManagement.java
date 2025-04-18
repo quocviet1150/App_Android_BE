@@ -26,7 +26,7 @@ public class PersonnelManagement {
     @Column(name = "DEPARTMENTID")
     private Long departmentId;
 
-    @Column(name = "FULLNAME", length = 255, unique = true)
+    @Column(name = "FULLNAME")
     private String fullName;
 
     @Column(name = "LEVEL")
@@ -43,4 +43,7 @@ public class PersonnelManagement {
 
     @Column(name = "DIRECTORYPATH")
     private String directoryPath;
+
+    @Column(name = "STATUS")
+    private Integer status;
 }

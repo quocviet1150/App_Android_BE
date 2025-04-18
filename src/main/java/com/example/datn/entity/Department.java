@@ -28,13 +28,13 @@ public class Department {
     @Column(name = "DEPARTMENTNAME", length = 100, unique = true)
     private String departmentName;
 
-    @Column(name = "HEADOFDEPARTMENT", length = 100, unique = true)
+    @Column(name = "HEADOFDEPARTMENT")
     private String headOfDepartment;
 
-    @Column(name = "NUMBEROFEMPLOYEES", unique = true)
+    @Column(name = "NUMBEROFEMPLOYEES")
     private Long numberOfEmployees;
 
-    @Column(name = "CREATED_DATE", unique = true)
+    @Column(name = "CREATED_DATE")
     private Date createdDate;
 
     @Column(name = "UPDATED_DATE")
