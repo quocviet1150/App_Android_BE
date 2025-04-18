@@ -29,20 +29,40 @@ public class DepartmentController {
         }
     }
 
-    @GetMapping("/getLeaveManagementAndPersonnelManagementByDepartment/{departmentId}")
-    public ResponseEntity<?> getLeaveManagementAndPersonnelManagementByDepartment( @PathVariable("departmentId") Long departmentId) {
+    @GetMapping("/getLeaveManagementAndEmployeeManagementByDepartment/{departmentId}")
+    public ResponseEntity<?> getLeaveManagementAndEmployeeManagementByDepartment(@PathVariable("departmentId") Long departmentId) {
         try {
-            DepartmentDto departmentDto = departmentService.getLeaveManagementAndPersonnelManagementByDepartment(departmentId);
+            DepartmentDto departmentDto = departmentService.getLeaveManagementAndEmployeeManagementByDepartment(departmentId);
             return ResponseEntity.ok(departmentDto);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
         }
     }
 
-    @PostMapping("/createDepartment")
+    @PostMapping("/createOrUpdateDepartment")
     public ResponseEntity<?> createOrUpdateDepartment(@RequestBody DepartmentCreateDto departmentCreateDto) {
         try {
             Department department = departmentService.createOrUpdateDepartment(departmentCreateDto);
+            return ResponseEntity.ok(department);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
+        }
+    }
+
+    @PostMapping("/deleteDepartment")
+    public ResponseEntity<?> deleteDepartment(@RequestBody Long departmentId) {
+        try {
+            departmentService.deleteDepartment(departmentId);
+            return ResponseEntity.ok(HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
+        }
+    }
+
+    @GetMapping("/getDepartmentById/{departmentId}")
+    public ResponseEntity<?> getDepartmentById(@PathVariable("departmentId") Long departmentId) {
+        try {
+            Department department = departmentService.getDepartmentById(departmentId);
             return ResponseEntity.ok(department);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);

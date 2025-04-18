@@ -16,11 +16,11 @@ public interface DepartmentService {
     List<Department> getAllDepartment();
 
     /**
-     * Get leave management and personnel management by department
+     * Get leave management and employee management by department
      *
      * @return DepartmentDto
      */
-    DepartmentDto getLeaveManagementAndPersonnelManagementByDepartment(Long departmentId);
+    DepartmentDto getLeaveManagementAndEmployeeManagementByDepartment(Long departmentId);
 
     /**
      * Create department
@@ -28,4 +28,17 @@ public interface DepartmentService {
      * @return Department
      */
     Department createOrUpdateDepartment(DepartmentCreateDto departmentCreateDto);
+
+    /**
+     * Delete department
+     *
+     */
+    void deleteDepartment(Long departmentId);
+
+    /**
+     * Get department by id
+     *
+     * @return Department
+     */
+    Department getDepartmentById(Long departmentId);
 }

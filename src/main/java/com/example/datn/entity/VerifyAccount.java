@@ -3,6 +3,7 @@ package com.example.datn.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Calendar;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 @Table(name = "VERIFY_ACCOUNT")
 @Getter
 @Setter
-public class VerifyAccount {
+public class VerifyAccount implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

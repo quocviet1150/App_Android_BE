@@ -5,14 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "PERSONNELMANAGEMENTS")
+@Table(name = "EMPLOYEEMANAGEMENTS")
 @Getter
 @Setter
 @NoArgsConstructor
-public class PersonnelManagement {
+public class EmployeeManagement implements Serializable {
 
     private static final long serialVersionUID = 4L;
 

@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -17,7 +18,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Department {
+public class Department implements Serializable {
 
     private static final long serialVersionUID = 2L;
 

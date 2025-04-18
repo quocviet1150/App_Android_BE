@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
@@ -12,7 +13,7 @@ import java.util.Date;
 @Getter
 @Setter
 @NoArgsConstructor
-public class TimeManagement {
+public class TimeManagement implements Serializable {
 
     private static final long serialVersionUID = 5L;
 
@@ -20,8 +21,8 @@ public class TimeManagement {
     @Column(name = "ID", unique = true)
     private String id;
 
-    @Column(name = "PERSONNELMANAGEMENTID")
-    private Long personnelManagementId;
+    @Column(name = "EMPLOYEEMANAGEMENTID")
+    private Long employeeManagementId;
 
     @Column(name = "WORKDAY")
     private Date workday;

@@ -4,10 +4,10 @@ import com.example.datn.dto.DepartmentCreateDto;
 import com.example.datn.dto.DepartmentDto;
 import com.example.datn.entity.Department;
 import com.example.datn.entity.LeaveManagement;
-import com.example.datn.entity.PersonnelManagement;
+import com.example.datn.entity.EmployeeManagement;
 import com.example.datn.repository.DepartmentRepository;
 import com.example.datn.repository.LeaveManagementRepository;
-import com.example.datn.repository.PersonnelManagementRepository;
+import com.example.datn.repository.EmployeeManagementRepository;
 import com.example.datn.service.DepartmentService;
 import com.nimbusds.oauth2.sdk.util.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +18,21 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@Transactional
 public class DepartmentServiceImpl implements DepartmentService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
 
     @Autowired
-    private PersonnelManagementRepository personnelManagementRepository;
+    private EmployeeManagementRepository employeeManagementRepository;
 
     @Autowired
     private LeaveManagementRepository leaveManagementRepository;
 
+    /**
+     * @{inheritDoc}
+     */
     @Override
     public List<Department> getAllDepartment() {
         List<Department> departments;
@@ -41,22 +45,25 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
     }
 
+    /**
+     * @{inheritDoc}
+     */
     @Override
-    public DepartmentDto getLeaveManagementAndPersonnelManagementByDepartment(Long departmentId) {
+    public DepartmentDto getLeaveManagementAndEmployeeManagementByDepartment(Long departmentId) {
         DepartmentDto departmentDto = new DepartmentDto();
         try {
             // Get department by id
             Department department = departmentRepository.getById(departmentId);
 
-            // get PersonnelManagement by departmentId
-            List<PersonnelManagement> personnelManagements = personnelManagementRepository.findByDepartmentId(departmentId);
-            if (CollectionUtils.isNotEmpty(personnelManagements)) {
-                departmentDto.setPersonnelManagements(personnelManagements);
+            // get EmployeeManagement by departmentId
+            List<EmployeeManagement> employeeManagements = employeeManagementRepository.findByDepartmentId(departmentId);
+            if (CollectionUtils.isNotEmpty(employeeManagements)) {
+                departmentDto.setEmployeeManagements(employeeManagements);
             }
 
             // get LeaveManagement by departmentId
             List<LeaveManagement> leaveManagements = leaveManagementRepository.findByDepartmentId(departmentId);
-            if (CollectionUtils.isNotEmpty(personnelManagements)) {
+            if (CollectionUtils.isNotEmpty(employeeManagements)) {
                 departmentDto.setLeaveManagements(leaveManagements);
             }
 
@@ -71,8 +78,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
     }
 
+    /**
+     * @{inheritDoc}
+     */
     @Override
-    @Transactional
     public Department createOrUpdateDepartment(DepartmentCreateDto departmentCreateDto) {
         Department department;
         try {
@@ -90,6 +99,40 @@ public class DepartmentServiceImpl implements DepartmentService {
             department.setUpdatedDate(new Date());
 
             return departmentRepository.save(department);
+        } catch (Exception e) {
+            e.fillInStackTrace();
+            throw e;
+        }
+    }
+
+    /**
+     * @{inheritDoc}
+     */
+    @Override
+    public void deleteDepartment(Long departmentId) {
+        try {
+            Department department = departmentRepository.findById(departmentId)
+                    .orElseThrow(() -> new RuntimeException("Department not found with ID: " + departmentId));
+
+            leaveManagementRepository.deleteLeaveManagementsByDepartmentId(departmentId);
+
+            employeeManagementRepository.deleteEmployeeManagementsByDepartmentId(departmentId);
+
+            departmentRepository.delete(department);
+        } catch (Exception e) {
+            e.fillInStackTrace();
+            throw e;
+        }
+    }
+
+    /**
+     * @{inheritDoc}
+     */
+    @Override
+    public Department getDepartmentById(Long departmentId) {
+        try {
+            return departmentRepository.findById(departmentId)
+                    .orElseThrow(() -> new RuntimeException("Department not found with ID: " + departmentId));
         } catch (Exception e) {
             e.fillInStackTrace();
             throw e;

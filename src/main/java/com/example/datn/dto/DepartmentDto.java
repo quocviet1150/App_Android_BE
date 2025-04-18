@@ -1,7 +1,7 @@
 package com.example.datn.dto;
 
+import com.example.datn.entity.EmployeeManagement;
 import com.example.datn.entity.LeaveManagement;
-import com.example.datn.entity.PersonnelManagement;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,6 +25,6 @@ public class DepartmentDto implements Serializable {
     private String departmentName;
     private String headOfDepartment;
     private Long numberOfEmployees;
-    private List<PersonnelManagement> personnelManagements;
+    private List<EmployeeManagement> employeeManagements;
     private List<LeaveManagement> leaveManagements;
 }
