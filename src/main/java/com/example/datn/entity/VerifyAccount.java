@@ -20,7 +20,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "verify_account")
+@Table(name = "VERIFY_ACCOUNT")
 @Getter
 @Setter
 public class VerifyAccount {

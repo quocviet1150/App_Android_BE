@@ -10,9 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "DEPARTMENTS")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +27,17 @@ public class Department {
 
     @Column(name = "DEPARTMENTNAME", length = 100, unique = true)
     private String departmentName;
+
+    @Column(name = "HEADOFDEPARTMENT", length = 100, unique = true)
+    private String headOfDepartment;
+
+    @Column(name = "NUMBEROFEMPLOYEES", unique = true)
+    private int numberOfEmployees;
+
+    @Column(name = "CREATED_DATE", unique = true)
+    private Date createdDate;
+
+    @Column(name = "UPDATED_DATE")
+    private Date updatedDate;
 }
 
