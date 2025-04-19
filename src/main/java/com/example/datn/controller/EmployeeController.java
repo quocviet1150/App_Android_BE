@@ -1,6 +1,7 @@
 package com.example.datn.controller;
 
 import com.example.datn.constant.Constants;
+import com.example.datn.dto.EmployeeDto;
 import com.example.datn.entity.EmployeeManagement;
 import com.example.datn.service.EmployeeManagementService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,10 @@ public class EmployeeController {
         }
     }
 
-    @PostMapping("/changeStatus/{employeeId}")
-    public ResponseEntity<?> changeStatus(@PathVariable Long employeeId) {
+    @PostMapping("/changeStatus/{employeeId}/{status}")
+    public ResponseEntity<?> changeStatus(@PathVariable Long employeeId, @PathVariable Integer status) {
         try {
-            employeeManagementService.changeStatus(employeeId);
+            employeeManagementService.changeStatus(employeeId, status);
             return ResponseEntity.ok(HttpStatus.OK);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
@@ -43,6 +44,16 @@ public class EmployeeController {
         try {
             employeeManagementService.deleteEmployee(employeeId);
             return ResponseEntity.ok(HttpStatus.OK);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
+        }
+    }
+
+    @GetMapping("/getEmployeeById/{employeeId}")
+    public ResponseEntity<?> getEmployeeById(@PathVariable Long employeeId) {
+        try {
+            EmployeeDto employeeDto = employeeManagementService.getEmployeeById(employeeId);
+            return ResponseEntity.ok(employeeDto);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
         }

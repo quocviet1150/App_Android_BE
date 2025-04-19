@@ -1,5 +1,6 @@
 package com.example.datn.service;
 
+import com.example.datn.dto.EmployeeDto;
 import com.example.datn.entity.EmployeeManagement;
 
 import java.util.List;
@@ -16,10 +17,17 @@ public interface EmployeeManagementService {
     /**
      * Change status of employee
      */
-    void changeStatus(Long employeeId);
+    void changeStatus(Long employeeId, Integer status) throws Exception;
 
     /**
      * Delete employee
      */
     void deleteEmployee(Long employeeId);
+
+    /**
+     * Get employee by id
+     *
+     * @return EmployeeDto
+     */
+    EmployeeDto getEmployeeById(Long employeeId) throws Exception;
 }

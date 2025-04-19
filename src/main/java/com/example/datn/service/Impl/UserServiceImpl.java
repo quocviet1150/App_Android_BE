@@ -19,7 +19,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -29,13 +28,7 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -66,14 +59,6 @@ public class UserServiceImpl implements UserService {
         String password = userCreateDto.getPassword();
         String firstName = userCreateDto.getFirstName();
         String lastName = userCreateDto.getLastName();
-
-//        if (accountDao.findByEmail(email).isPresent()) {
-//            throw new Exception(Constants.DUPLICATE_EMAIL);
-//        }
-//
-//        if (accountDao.findByUsername(username).isPresent()) {
-//            throw new Exception(Constants.DUPLICATE_USERNAME);
-//        }
 
         User user = new User();
         user.setEmail(email);
