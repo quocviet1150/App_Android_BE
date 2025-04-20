@@ -1,5 +1,7 @@
 package com.example.datn.service;
 
+import com.example.datn.dto.EmployeeCreateCameraDto;
+import com.example.datn.dto.EmployeeCreateCardDto;
 import com.example.datn.dto.EmployeeDto;
 import com.example.datn.entity.EmployeeManagement;
 
@@ -30,4 +32,18 @@ public interface EmployeeManagementService {
      * @return EmployeeDto
      */
     EmployeeDto getEmployeeByEmployeeCode(String employeeCode) throws Exception;
+
+    /**
+     * Create employee
+     *
+     * @return EmployeeManagement
+     */
+    EmployeeManagement createEmployeeUseCard(EmployeeCreateCardDto employeeCreateCardDto);
+
+    /**
+     * Create employee using camera
+     *
+     * @return EmployeeManagement
+     */
+    EmployeeManagement createEmployeeUseCamera(EmployeeCreateCameraDto employeeCreateCameraDto) throws Exception;
 }

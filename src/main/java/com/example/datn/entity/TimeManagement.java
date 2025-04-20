@@ -22,7 +22,7 @@ public class TimeManagement implements Serializable {
     private String id;
 
     @Column(name = "EMPLOYEECODE", unique = true)
-    private Long employeeCode;
+    private String employeeCode;
 
     @Column(name = "WORKDAY")
     private Date workday;

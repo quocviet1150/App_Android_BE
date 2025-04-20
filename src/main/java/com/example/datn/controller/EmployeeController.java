@@ -1,6 +1,8 @@
 package com.example.datn.controller;
 
 import com.example.datn.constant.Constants;
+import com.example.datn.dto.EmployeeCreateCameraDto;
+import com.example.datn.dto.EmployeeCreateCardDto;
 import com.example.datn.dto.EmployeeDto;
 import com.example.datn.entity.EmployeeManagement;
 import com.example.datn.service.EmployeeManagementService;
@@ -54,6 +56,26 @@ public class EmployeeController {
         try {
             EmployeeDto employeeDto = employeeManagementService.getEmployeeByEmployeeCode(employeeCode);
             return ResponseEntity.ok(employeeDto);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
+        }
+    }
+
+    @PostMapping("/createEmployeeUseCard")
+    public ResponseEntity<?> createEmployeeUseCard(@RequestBody EmployeeCreateCardDto employeeCreateCardDto) {
+        try {
+            EmployeeManagement employee = employeeManagementService.createEmployeeUseCard(employeeCreateCardDto);
+            return ResponseEntity.ok(employee);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
+        }
+    }
+
+    @PostMapping("/createEmployeeUseCamera")
+    public ResponseEntity<?> createEmployeeUseCamera(@RequestBody EmployeeCreateCameraDto employeeCreateCameraDto) {
+        try {
+            EmployeeManagement employee = employeeManagementService.createEmployeeUseCamera(employeeCreateCameraDto);
+            return ResponseEntity.ok(employee);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
         }

@@ -12,5 +12,5 @@ public interface TimeManagementService {
      * @param employeeCode the employee code
      * @return the created TimeManagement entity
      */
-    TimeManagement create(Long employeeCode) throws ParseException;
+    TimeManagement create(String employeeCode) throws ParseException;
 }

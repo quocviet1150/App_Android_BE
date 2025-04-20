@@ -22,7 +22,7 @@ public class EmployeeManagement implements Serializable {
     private Long id;
 
     @Column(name = "EMPLOYEECODE", unique = true)
-    private Long employeeCode;
+    private String employeeCode;
 
     @Column(name = "DEPARTMENTID")
     private Long departmentId;

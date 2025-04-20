@@ -17,7 +17,7 @@ public class TimeManagementServiceImpl implements TimeManagementService {
     private TimeManagementRepository timeManagementRepository;
 
     @Override
-    public TimeManagement create(Long employeeCode) throws ParseException {
+    public TimeManagement create(String employeeCode) throws ParseException {
         TimeManagement timeManagement = new TimeManagement();
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

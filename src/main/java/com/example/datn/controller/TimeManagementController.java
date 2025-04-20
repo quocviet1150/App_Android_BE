@@ -19,7 +19,7 @@ public class TimeManagementController {
     private TimeManagementService timeManagementService;
 
     @PostMapping("/create/{employeeCode}")
-    public ResponseEntity<?> create(@PathVariable Long employeeCode) {
+    public ResponseEntity<?> create(@PathVariable String employeeCode) {
         try {
            TimeManagement timeManagement = timeManagementService.create(employeeCode);
             return ResponseEntity.ok(timeManagement);
