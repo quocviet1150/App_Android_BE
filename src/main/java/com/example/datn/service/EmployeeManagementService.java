@@ -29,5 +29,5 @@ public interface EmployeeManagementService {
      *
      * @return EmployeeDto
      */
-    EmployeeDto getEmployeeById(Long employeeId) throws Exception;
+    EmployeeDto getEmployeeByEmployeeCode(String employeeCode) throws Exception;
 }

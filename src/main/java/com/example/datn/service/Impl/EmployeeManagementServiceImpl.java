@@ -10,7 +10,6 @@ import io.jsonwebtoken.lang.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -93,21 +92,21 @@ public class EmployeeManagementServiceImpl implements EmployeeManagementService 
      * @{inheritDoc}
      */
     @Override
-    public EmployeeDto getEmployeeById(Long employeeId) throws Exception {
+    public EmployeeDto getEmployeeByEmployeeCode(String employeeCode) throws Exception {
         EmployeeDto employeeDto = new EmployeeDto();
         try {
-            if (employeeId == null) {
+            if (employeeCode == null) {
                 throw new Exception();
             }
 
             // Fetch time managements by employeeId
-            List<TimeManagement> timeManagements = timeManagementRepository.findTimeManagementsByEmployeeManagementId(employeeId);
+            List<TimeManagement> timeManagements = timeManagementRepository.findTimeManagementsByEmployeeCode(employeeCode);
             if (!Collections.isEmpty(timeManagements)) {
                 employeeDto.setTimeManagements(timeManagements);
             }
 
             // Fetch employee management by employeeId
-            EmployeeManagement employeeManagement = employeeManagementRepository.findById(employeeId).orElse(null);
+            EmployeeManagement employeeManagement = employeeManagementRepository.findByEmployeeCode(employeeCode);
             if (employeeManagement == null) {
                 throw new Exception();
             }

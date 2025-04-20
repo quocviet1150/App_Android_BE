@@ -21,8 +21,8 @@ public class TimeManagement implements Serializable {
     @Column(name = "ID", unique = true)
     private String id;
 
-    @Column(name = "EMPLOYEEMANAGEMENTID")
-    private Long employeeManagementId;
+    @Column(name = "EMPLOYEECODE", unique = true)
+    private Long employeeCode;
 
     @Column(name = "WORKDAY")
     private Date workday;

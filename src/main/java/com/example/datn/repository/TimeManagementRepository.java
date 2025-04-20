@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface TimeManagementRepository extends JpaRepository<TimeManagement, String> {
 
-    @Query("SELECT t FROM TimeManagement t WHERE t.employeeManagementId = :employeeId")
-    List<TimeManagement> findTimeManagementsByEmployeeManagementId(Long employeeId);
+    @Query("SELECT t FROM TimeManagement t WHERE t.employeeCode = :employeeId")
+    List<TimeManagement> findTimeManagementsByEmployeeCode(String employeeCode);
 }

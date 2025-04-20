@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface EmployeeManagementRepository extends JpaRepository<EmployeeManagement, Long> {
@@ -17,4 +18,7 @@ public interface EmployeeManagementRepository extends JpaRepository<EmployeeMana
     @Modifying
     @Query("DELETE FROM EmployeeManagement p WHERE p.departmentId =:departmentId")
     void deleteEmployeeManagementsByDepartmentId(Long departmentId);
+
+    @Query("SELECT p FROM EmployeeManagement p WHERE p.employeeCode =:employeeCode")
+    EmployeeManagement findByEmployeeCode(String employeeCode);
 }

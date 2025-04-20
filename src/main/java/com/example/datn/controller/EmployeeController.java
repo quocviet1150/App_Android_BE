@@ -49,10 +49,10 @@ public class EmployeeController {
         }
     }
 
-    @GetMapping("/getEmployeeById/{employeeId}")
-    public ResponseEntity<?> getEmployeeById(@PathVariable Long employeeId) {
+    @GetMapping("/getEmployeeByEmployeeCode/{employeeCode}")
+    public ResponseEntity<?> getEmployeeByEmployeeCode(@PathVariable String employeeCode) {
         try {
-            EmployeeDto employeeDto = employeeManagementService.getEmployeeById(employeeId);
+            EmployeeDto employeeDto = employeeManagementService.getEmployeeByEmployeeCode(employeeCode);
             return ResponseEntity.ok(employeeDto);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(Constants.ERROR);
