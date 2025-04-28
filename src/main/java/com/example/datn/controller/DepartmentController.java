@@ -19,7 +19,7 @@ public class DepartmentController {
     @Autowired
     private DepartmentService departmentService;
 
-    @PostMapping("/getAllDepartment")
+    @GetMapping("/getAllDepartment")
     public ResponseEntity<?> getAllDepartment() {
         try {
             List<Department> departments = departmentService.getAllDepartment();
